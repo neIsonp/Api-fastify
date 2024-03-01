@@ -2,6 +2,7 @@ import Fastify, { FastifyReply, FastifyRequest } from "fastify";
 import { userRoutes } from "./modules/user/user.route";
 import { userSchemas } from "./modules/user/user.schema";
 import fjwt from "@fastify/jwt";
+import "./types";
 
 export const app = Fastify();
 

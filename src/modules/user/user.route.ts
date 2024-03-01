@@ -29,5 +29,14 @@ export async function userRoutes(app: FastifyInstance) {
     loginHander
   );
 
-  app.get("/users", {}, getUsersHandler);
+  app.get(
+    "/",
+    {
+      preHandler: [app.authenticate],
+      schema: {
+        response: { 200: $ref("userListSchemaResponse") },
+      },
+    },
+    getUsersHandler
+  );
 }

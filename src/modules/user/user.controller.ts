@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from "fastify";
-import { CreateUserInput, loginInput } from "./user.schema";
-import { createUser, findUserByEmail } from "./user.service";
+import { CreateUserInput, LoginInput } from "./user.schema";
+import { createUser, findUserByEmail, findUsers } from "./user.service";
 import { verifyPassword } from "../../utils/hash";
 import { app } from "../../app";
 
@@ -24,7 +24,7 @@ export async function registerUserHandler(
 }
 
 export async function loginHander(
-  req: FastifyRequest<{ Body: loginInput }>,
+  req: FastifyRequest<{ Body: LoginInput }>,
   res: FastifyReply
 ) {
   const { email, password } = req.body;
@@ -50,4 +50,8 @@ export async function loginHander(
   return { accessToken: app.jwt.sign(rest) };
 }
 
-export async function getUsersHandler(req: FastifyRequest, res: FastifyReply) {}
+export async function getUsersHandler(req: FastifyRequest, res: FastifyReply) {
+  const users = await findUsers();
+
+  return users;
+}
