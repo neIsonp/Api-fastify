@@ -19,14 +19,6 @@ export const productResponseSchema = z.object({
   ...productGenerated,
 });
 
-export const productsRespondeSchema = z.array(createProductSchema);
+export const productsResponseSchema = z.array(createProductSchema);
 
 export type CreateProductInput = z.infer<typeof createProductSchema>;
-
-export const { schemas: productSchemas, $ref: $productRefs } = buildJsonSchemas(
-  {
-    createProductSchema,
-    productResponseSchema,
-    productsRespondeSchema,
-  }
-);

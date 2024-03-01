@@ -2,8 +2,8 @@ import Fastify, { FastifyReply, FastifyRequest } from "fastify";
 import { userRoutes } from "./modules/user/user.route";
 import fjwt from "@fastify/jwt";
 import "./types";
-import { productSchemas } from "./modules/product/product.schema";
 import { schemas } from "./modules/schemas";
+import { productRoutes } from "./modules/product/product.route";
 
 export const app = Fastify();
 
@@ -28,6 +28,7 @@ for (const schema of schemas) {
 }
 
 app.register(userRoutes, { prefix: "api/users" });
+app.register(productRoutes, { prefix: "api/products" });
 
 app.listen({ port: 3000 }).then(() => {
   console.log("Server ready!");

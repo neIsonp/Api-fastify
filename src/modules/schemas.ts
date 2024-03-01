@@ -10,7 +10,7 @@ import {
 import {
   createProductSchema,
   productResponseSchema,
-  productsRespondeSchema,
+  productsResponseSchema,
 } from "./product/product.schema";
 
 export const { schemas, $ref } = buildJsonSchemas({
@@ -21,5 +21,5 @@ export const { schemas, $ref } = buildJsonSchemas({
   userListSchemaResponse,
   createProductSchema,
   productResponseSchema,
-  productsRespondeSchema,
+  productsResponseSchema,
 });
