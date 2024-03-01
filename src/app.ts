@@ -1,9 +1,9 @@
 import Fastify, { FastifyReply, FastifyRequest } from "fastify";
 import { userRoutes } from "./modules/user/user.route";
-import { userSchemas } from "./modules/user/user.schema";
 import fjwt from "@fastify/jwt";
 import "./types";
-import { productSchemas } from "./modules/product/user.schema";
+import { productSchemas } from "./modules/product/product.schema";
+import { schemas } from "./modules/schemas";
 
 export const app = Fastify();
 
@@ -23,7 +23,7 @@ app.decorate("authenticate", async (req: FastifyRequest, res: FastifyReply) => {
   }
 });
 
-for (const schema of [...userSchemas, ...productSchemas]) {
+for (const schema of schemas) {
   app.addSchema(schema);
 }
 
