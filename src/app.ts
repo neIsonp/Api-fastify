@@ -1,9 +1,12 @@
 import Fastify, { FastifyReply, FastifyRequest } from "fastify";
+import swagger from "@fastify/swagger";
+import { withRefResolver } from "fastify-zod";
 import { userRoutes } from "./modules/user/user.route";
 import fjwt from "@fastify/jwt";
 import "./types";
 import { schemas } from "./modules/schemas";
 import { productRoutes } from "./modules/product/product.route";
+import { version } from "../package.json";
 
 export const app = Fastify();
 
